@@ -18,7 +18,7 @@
 <br>
 
 ## Timer42
-### Timer42 is my project of a collection clock's functions. I'm working now in this stopwatch and planning the Timer and a clock. 
+### Timer42 é meu projeto de uma coleção de funções de relógio. Eu estou trabalhando agora no cronômetro e planejando um temporizador e um relógio. 
 
 <br>
 

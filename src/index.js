@@ -1,20 +1,25 @@
 const minutesValue = document.getElementById("minutes");
 const secondsValue = document.getElementById("seconds");
 const milisecondsValue = document.getElementById("miliseconds");
+const btn_start = document.getElementById("start");
+const btn_pause = document.getElementById("pause");
+const btn_stop = document.getElementById("stop");
+const btn_return = document.getElementById("return");
 let timer = [0, 0, 0]; // Timer[0] is the miliseconds, timer[1] is the seconds
 // And timer[2] is the minutes
 
+
 function start() {
-    document.getElementById("start").classList.add("disable");
-    document.getElementById("pause").classList.remove("disable");
-    document.getElementById("stop").classList.remove("disable");
+    btn_start.classList.add("disable");
+    btn_pause.classList.remove("disable");
+    btn_stop.classList.remove("disable");
     setWork(true);
 }
 
 function pause() {
     setWork(false);
-    document.getElementById("return").classList.remove("disable");
-    document.getElementById("pause").classList.add("disable");
+    btn_return.classList.remove("disable");
+    btn_pause.classList.add("disable");
 }
 
 function stop() {
@@ -33,28 +38,28 @@ function returnWork() {
 }
 
 function setWork(working) {
-    working == true ? time = setInterval(count, 10) : clearInterval(time); //Se a função for chamada para ligar, começa a contar. Se não, para a contagem.
+    working == true ? (
+        miliseconds = setInterval(() => { 
+            timer[0] = increment(timer[0], 100)
+            milisecondsValue.innerHTML = formatNumber(timer[0])
+    }, 10),
+        seconds = setInterval(() => {
+            timer[1] = increment(timer[1], 60)
+            secondsValue.innerHTML = formatNumber(timer[1])
+            timer[0] = 0;
+            document.title = "Corno..." + minutesValue.innerHTML + ":" + secondsValue.innerHTML;
+        }, 1000),
+        minutes = setInterval(() => {
+            timer[2] = increment(timer[2], 60)
+            minutesValue.innerHTML = formatNumber(timer[2])
+        }, 60000)
+        
+    ) : clearInterval(miliseconds); //Se a função for chamada para ligar, começa a contar. Se não, para a contagem.    
 }
 
-function increment(number) {
-    return number = ++number;
-}
-
-function count() {
-    timer[0] == 99 ? (
-            timer[1] = ++timer[1],
-            timer[0] = 0
-        ) : timer[1] == 60 ? (
-            timer[1] = 0,
-            timer[0] = 0,
-            timer[2] = ++timer[2]
-        )
-            : timer[0] = ++timer[0];
-
-    milisecondsValue.innerHTML = formatNumber(timer[0])
-    secondsValue.innerHTML = formatNumber(timer[1])
-    minutesValue.innerHTML = formatNumber(timer[2])
-    document.title = "Corno..." + minutesValue.innerHTML + ":" + secondsValue.innerHTML;
+function increment(number, turn) {
+    number = ++number;
+    return (number >= turn ? 0 : number);
 }
 
 function formatNumber(number) {
