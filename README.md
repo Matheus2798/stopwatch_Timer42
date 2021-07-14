@@ -5,7 +5,7 @@
 <br>
 
 ## Timer42
-### Timer42 is my project of a collection clock's functions. I'm working now in this stopwatch and planning the Timer and a clock. 
+### Timer42 is my project of a collection clock's functions. I'm working now in this stopwatch and planning the Timer and the clock. 
 
 <br>
 
@@ -30,10 +30,3 @@
 
 <br>
 
-# Project's image / Imagem do projeto
-## Planning
-![](./img/planning_stoped.png)
-
-## Actually
-
-![](./img/actually_stoped.png)
